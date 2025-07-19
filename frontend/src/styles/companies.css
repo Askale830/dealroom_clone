@@ -1,0 +1,426 @@
+/* Companies Page Custom Styles */
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* @keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(59, 130, 246, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(59, 130, 246, 0);
+  }
+} */
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* General Styles */
+.companies-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  background: url('https://png.pngtree.com/background/20210709/original/pngtree-innovation-technological-sense-earth-planet-picture-image_914672.jpg') center/cover no-repeat, linear-gradient(135deg, #f8fafc 0%, #e0e7ff 100%);
+  border-radius: 24px;
+  box-shadow: 0 8px 32px rgba(60, 72, 100, 0.10), 0 1.5px 6px rgba(60, 72, 100, 0.08);
+  padding: 32px 24px;
+  margin-top: 32px;
+  color: #f59e42 !important; /* orange */
+  text-shadow: none;
+}
+
+.companies-container h1,
+.companies-container h2,
+.companies-container h3,
+.companies-container label {
+  color: #2563eb !important; /* blue */
+  font-weight: 800;
+  text-shadow: none;
+}
+
+.companies-container p,
+.companies-container span,
+.companies-container input,
+.companies-container textarea {
+  color: #f59e42 !important; /* orange */
+  text-shadow: none;
+}
+
+.companies-container .btn,
+.companies-container button,
+.companies-container a {
+  color: #fff !important;
+  background: linear-gradient(90deg, #2563eb 0%, #f59e42 100%);
+  border: none;
+  font-weight: 700;
+  box-shadow: 0 2px 8px rgba(37,99,235,0.10);
+}
+
+.companies-container .btn:hover,
+.companies-container button:hover,
+.companies-container a:hover {
+  background: linear-gradient(90deg, #f59e42 0%, #2563eb 100%);
+  color: #fff !important;
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+.animate-slideIn {
+  animation: slideInRight 0.4s ease-out forwards;
+}
+
+/* Filter Section Enhancements */
+.filter-section {
+  background: rgba(255,255,255,0.85);
+  border-radius: 16px;
+  box-shadow: 0 2px 12px rgba(60, 72, 100, 0.08);
+  border: 1px solid #e0e7ff;
+  padding: 20px 24px;
+}
+
+.filter-section:hover {
+  box-shadow: 0 4px 8px rgba(0,0,0,0.06); /* Slightly more pronounced but still subtle */
+}
+
+.filter-badge {
+  transition: all 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+/* Removed shimmer from filter-badge hover, consider a subtle background or border change if needed */
+.filter-badge:hover {
+  /* transform: translateY(-2px); */ /* Removed transform for a flatter interaction */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08); /* Subtle shadow on hover */
+}
+/*
+
+.filter-badge::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(120deg, rgba(255,255,255,0) 30%, rgba(255,255,255,0.8), rgba(255,255,255,0) 70%);
+  animation: shimmer 2s infinite;
+  background-size: 200% 100%;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+} */
+
+/* .filter-badge:hover::before {
+  opacity: 1;
+} */
+
+/* View Toggle Enhancements */
+.view-toggle-button {
+  transition: all 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.view-toggle-button.active {
+  background-color: #3b82f6; /* Solid background for active state */
+  color: white;
+  /* animation: pulse 2s infinite; */ /* Removed pulse animation */
+}
+
+.view-toggle-button:not(.active):hover {
+  background-color: #f3f4f6;
+  /* transform: translateY(-2px); */ /* Optional: remove transform for flatter hover */
+}
+
+/* Card View Enhancements */
+.company-card {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  background: rgba(255,255,255,0.95);
+  border-radius: 18px;
+  box-shadow: 0 4px 24px rgba(60, 72, 100, 0.10), 0 1.5px 6px rgba(60, 72, 100, 0.08);
+  border: none;
+}
+
+.company-card:hover {
+  box-shadow: 0 8px 32px rgba(60, 72, 100, 0.16), 0 3px 12px rgba(60, 72, 100, 0.10);
+  transform: translateY(-4px) scale(1.02);
+}
+
+.company-logo-container {
+  transition: all 0.3s ease;
+  background: linear-gradient(135deg, #e0e7ff 0%, #f8fafc 100%);
+  border-radius: 12px;
+  padding: 8px;
+  box-shadow: 0 2px 8px rgba(60, 72, 100, 0.08);
+}
+
+/* Removed logo scaling on hover */
+/* .company-card:hover .company-logo-container {
+  transform: scale(1.1);
+} */
+
+/* Landscape View Enhancements */
+.company-landscape {
+  transition: all 0.3s ease;
+  position: relative;
+  border: 1px solid #e5e7eb; /* Standard light border */
+  border-left-width: 3px;    /* Prepare for hover effect */
+  border-left-color: transparent; /* Start transparent */
+  border-radius: 4px;
+}
+
+/* Removed animated left border, replaced with simpler border-color change on hover */
+/* .company-landscape::before { ... } */
+/* .company-landscape:hover::before { ... } */
+
+.company-landscape:hover {
+  box-shadow: 0 2px 8px rgba(0,0,0,0.07); /* Subtle shadow */
+  border-left-color: #3b82f6; /* Highlight with primary color on hover */
+}
+
+/* Signal Score Enhancements */
+.signal-score {
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+/* Removed complex animated ::before for signal score for a cleaner look */
+/* .signal-score::before {
+  content: '';
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  bottom: -5px;
+  left: -5px;
+  border-radius: 50%;
+  background: conic-gradient(from 0deg, #3b82f6, #4f46e5, #8b5cf6, #3b82f6);
+  z-index: -1;
+  opacity: 0;
+  transform: scale(0.8);
+  transition: all 0.3s ease;
+} */
+
+/* .company-card:hover .signal-score::before,
+.company-landscape:hover .signal-score::before {
+  opacity: 0.7;
+  transform: scale(1);
+} */
+
+/* Interactive Elements */
+.interactive-link {
+  position: relative;
+  transition: all 0.2s ease;
+}
+
+.interactive-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.3s ease;
+}
+
+.interactive-link:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.interactive-link:hover {
+  color: #4f46e5;
+}
+
+/* Pagination Enhancements */
+.pagination-button {
+  transition: all 0.2s ease;
+  background: linear-gradient(90deg, #e0e7ff 0%, #f8fafc 100%);
+  border-radius: 8px;
+  color: #2563eb;
+  font-weight: 600;
+  border: none;
+  box-shadow: 0 1px 4px rgba(60, 72, 100, 0.06);
+}
+
+.pagination-button:hover:not(:disabled) {
+  /* transform: translateY(-2px); */ /* Optional: remove transform */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08); /* Subtle shadow */
+}
+
+.pagination-button.active {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(90deg, #2563eb 0%, #1e293b 100%);
+  color: #fff;
+}
+
+/* Removed shimmer from active pagination button, rely on .active class for styling */
+/* .pagination-button.active::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(120deg, rgba(255,255,255,0) 30%, rgba(255,255,255,0.3), rgba(255,255,255,0) 70%);
+  animation: shimmer 2s infinite;
+  background-size: 200% 100%;
+} */
+
+/* Loading State Enhancements */
+.loading-skeleton {
+  background: linear-gradient(90deg, #f3f4f6 25%, #e5e7eb 50%, #f3f4f6 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: 4px;
+}
+
+/* Empty State Enhancements */
+.empty-state-container {
+  transition: all 0.3s ease;
+}
+
+.empty-state-container:hover {
+  /* transform: translateY(-5px); */ /* Removed transform */
+  /* box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04); */ /* Removed shadow change or make very subtle */
+}
+
+.empty-state-icon {
+  transition: all 0.3s ease;
+}
+
+/* .empty-state-container:hover .empty-state-icon {
+  transform: scale(1.1) rotate(5deg);
+} */
+
+/* Tooltip Styles */
+.tooltip {
+  position: relative;
+}
+
+.tooltip::before {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-5px);
+  padding: 5px 10px;
+  background: #1f2937;
+  color: white;
+  border-radius: 4px;
+  font-size: 12px;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.2s ease;
+  z-index: 10;
+}
+
+.tooltip::after {
+  content: '';
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: #1f2937;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.2s ease;
+  z-index: 10;
+}
+
+.tooltip:hover::before,
+.tooltip:hover::after {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* Custom Scrollbar */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #c5c7d0;
+  border-radius: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #a0aec0;
+}
+
+/* Responsive Enhancements */
+@media (max-width: 768px) {
+  .company-card:hover,
+  .company-landscape:hover {
+    /* .empty-state-container:hover removed as its hover effects were removed */
+    transform: none;
+    box-shadow: none; /* Ensure shadows are also reset if they were part of hover */
+  }
+  
+  .filter-badge:hover {
+    transform: none;
+    box-shadow: none;
+  }
+  
+  .pagination-button:hover:not(:disabled) {
+    transform: none;
+    box-shadow: none;
+  }
+}
+
+@media (max-width: 900px) {
+  .companies-container {
+    padding: 12px 2px;
+    border-radius: 12px;
+  }
+  .company-card {
+    border-radius: 10px;
+    padding: 10px;
+  }
+  .filter-section {
+    border-radius: 8px;
+    padding: 10px 6px;
+  }
+}

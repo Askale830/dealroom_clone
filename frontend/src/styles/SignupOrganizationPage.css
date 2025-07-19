@@ -1,0 +1,105 @@
+/* Confetti, progress bar, and fade-in animation for SignupOrganizationPage */
+@keyframes progress-bar {
+  0% { width: 0; }
+  100% { width: 100%; }
+}
+.animate-progress-bar {
+  animation: progress-bar 2.5s linear;
+}
+@keyframes bounce-slow {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+.animate-bounce-slow {
+  animation: bounce-slow 2s infinite;
+}
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.animate-fade-in {
+  animation: fade-in 1s ease-in;
+}
+
+/* Remove global orange font color */
+.signup-organization-page *,
+.signup-organization-page {
+  color: unset !important;
+}
+
+/* Section backgrounds for attractive, visible, and themed look */
+.signup-organization-page {
+  background: linear-gradient(135deg, #f8fafc 0%, #e0e7ff 100%);
+  min-height: 100vh;
+}
+.signup-organization-section-org {
+  background: url('https://thumbs.dreamstime.com/b/bulb-future-technology-innovation-background-creative-idea-concept-artificial-intelligence-background-artificial-intelligence-141652156.jpg') center/cover no-repeat;
+  border-radius: 32px;
+  box-shadow: 0 8px 32px rgba(60, 72, 100, 0.10);
+  padding: 2.5rem 2rem;
+  margin-bottom: 2rem;
+  color: #fff !important;
+  text-shadow: 0 2px 8px rgba(30,41,59,0.25);
+}
+.signup-organization-section-org h1,
+.signup-organization-section-org h2,
+.signup-organization-section-org h3,
+.signup-organization-section-org label,
+.signup-organization-section-org p,
+.signup-organization-section-org span {
+  color: #fff !important;
+  text-shadow: 0 2px 8px rgba(30,41,59,0.35);
+}
+.signup-organization-section-org input,
+.signup-organization-section-org textarea {
+  color: #1e293b !important;
+  background: rgba(255,255,255,0.85);
+  border-radius: 8px;
+  box-shadow: 0 1px 4px rgba(30,41,59,0.08);
+}
+.signup-organization-section-contact {
+  background: url('/assets/bg-network.jpg') center/cover no-repeat, linear-gradient(135deg, #f0fdfa 0%, #e0e7ff 100%);
+  border-radius: 32px;
+  box-shadow: 0 8px 32px rgba(60, 72, 100, 0.10);
+  padding: 2.5rem 2rem;
+  margin-bottom: 2rem;
+  color: #0f172a !important;
+}
+.signup-organization-section-extra {
+  background: url('/assets/bg-growth.jpg') center/cover no-repeat, linear-gradient(135deg, #f8fafc 0%, #f0fdfa 100%);
+  border-radius: 32px;
+  box-shadow: 0 8px 32px rgba(60, 72, 100, 0.10);
+  padding: 2.5rem 2rem;
+  margin-bottom: 2rem;
+  color: #334155 !important;
+}
+
+/* Improve font color contrast for visibility */
+.signup-organization-page h1,
+.signup-organization-page h2,
+.signup-organization-page h3,
+.signup-organization-page label {
+  color: #0f172a !important;
+  font-weight: 800;
+}
+.signup-organization-page p,
+.signup-organization-page span,
+.signup-organization-page input,
+.signup-organization-page textarea {
+  color: #1e293b !important;
+}
+.signup-organization-page .btn,
+.signup-organization-page button,
+.signup-organization-page a {
+  color: #fff !important;
+  background: linear-gradient(90deg, #2563eb 0%, #1e40af 100%);
+  border: none;
+  font-weight: 700;
+  box-shadow: 0 2px 8px rgba(37,99,235,0.10);
+}
+.signup-organization-page .btn:hover,
+.signup-organization-page button:hover,
+.signup-organization-page a:hover {
+  background: linear-gradient(90deg, #1e40af 0%, #2563eb 100%);
+  color: #fff !important;
+}

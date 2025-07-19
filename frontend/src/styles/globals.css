@@ -1,0 +1,1218 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+  /* Dealroom Brand Colors */
+  --dealroom-primary: #1a1a1a;
+  --dealroom-blue: #2563eb;
+  --dealroom-accent: #06b6d4;
+  --dealroom-success: #10b981;
+  --dealroom-warning: #f59e0b;
+  --dealroom-error: #ef4444;
+  
+  /* Neutral Colors */
+  --white: #ffffff;
+  --gray-50: #f9fafb;
+  --gray-100: #f3f4f6;
+  --gray-200: #e5e7eb;
+  --gray-300: #d1d5db;
+  --gray-400: #9ca3af;
+  --gray-500: #6b7280;
+  --gray-600: #4b5563;
+  --gray-700: #374151;
+  --gray-800: #1f2937;
+  --gray-900: #111827;
+  
+  /* Blue Scale */
+  --blue-50: #eff6ff;
+  --blue-100: #dbeafe;
+  --blue-500: #3b82f6;
+  --blue-600: #2563eb;
+  --blue-700: #1d4ed8;
+  
+  /* Typography */
+  --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  
+  /* Spacing Scale */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-20: 5rem;
+  
+  /* Border Radius */
+  --radius-sm: 0.125rem;
+  --radius: 0.25rem;
+  --radius-md: 0.375rem;
+  --radius-lg: 0.5rem;
+  --radius-xl: 0.75rem;
+  --radius-2xl: 1rem;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+  
+  /* Z-index Scale */
+  --z-dropdown: 50;
+  --z-overlay: 100;
+  --z-modal: 200;
+}
+
+/* Reset & Base Styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Loading Spinner */
+.loading {
+  width: 20px;
+  height: 20px;
+  border: 2px solid #f3f3f3;
+  border-top: 2px solid #2563eb;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Form Styles */
+.form-input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1px solid #d1d5db;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+/* Button Styles */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 500;
+  border-radius: 0.5rem;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none;
+}
+
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.btn-primary {
+  background: linear-gradient(90deg, #2563eb 0%, #06b6d4 100%);
+  color: white;
+}
+
+.btn-primary:hover:not(:disabled) {
+  background: linear-gradient(90deg, #1d4ed8 0%, #0891b2 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+}
+
+.btn-lg {
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+}
+
+/* Gradient Helper */
+.dealroom-gradient {
+  background: linear-gradient(90deg, #2563eb 0%, #06b6d4 100%);
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  font-family: var(--font-family);
+  line-height: 1.6;
+  color: var(--gray-900);
+  background-color: var(--white);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+}
+
+/* Dealroom Header Styles */
+.dealroom-header {
+  position: sticky;
+  top: 0;
+  z-index: var(--z-dropdown);
+  background: var(--dealroom-primary); /* Dark background */
+  /* backdrop-filter: blur(12px); */ /* May not be needed with solid dark bg */
+  border-bottom: 1px solid var(--gray-700); /* Darker border */
+  transition: all 0.2s ease;
+  color: var(--gray-200); /* Default text color for header */
+}
+
+.dealroom-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 var(--space-6);
+}
+
+.dealroom-header-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 72px;
+}
+
+/* Logo Styles */
+.dealroom-logo {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+.dealroom-logo:hover {
+  opacity: 0.8;
+}
+
+.dealroom-logo-icon {
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(135deg, var(--dealroom-primary) 0%, var(--dealroom-blue) 100%);
+  border-radius: var(--radius-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-md);
+}
+
+.dealroom-logo-icon span {
+  color: var(--white);
+  font-weight: 700;
+  font-size: 18px;
+  letter-spacing: -0.02em;
+  }
+  
+.dealroom-logo-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+}
+
+.dealroom-logo-main {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--white); /* Logo main text to white */
+  letter-spacing: -0.02em;
+}
+
+.dealroom-logo-sub {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--gray-400); /* Lighter sub-text for dark bg */
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+/* Desktop Navigation */
+.dealroom-nav {
+  display: none;
+  align-items: center;
+  gap: var(--space-1);
+}
+
+@media (min-width: 1024px) {
+  .dealroom-nav {
+    display: flex;
+  }
+}
+
+.dealroom-nav-item {
+  position: relative;
+}
+
+.dealroom-nav-link {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  padding: var(--space-3) var(--space-4);
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--gray-300); /* Lighter nav link color */
+  text-decoration: none;
+  border-radius: var(--radius-lg);
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  letter-spacing: -0.01em;
+}
+
+.dealroom-nav-link:hover {
+  color: var(--white); /* Hover to white */
+  background-color: var(--gray-700); /* Darker hover background */
+}
+
+.dealroom-nav-link.active {
+  color: var(--white); /* Active link to white */
+  background-color: var(--dealroom-blue); /* Active background to blue */
+  font-weight: 600;
+}
+
+.dealroom-nav-dropdown-trigger {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.dealroom-nav-chevron {
+  transition: transform 0.2s ease;
+}
+
+.dealroom-nav-chevron.rotated {
+  transform: rotate(180deg);
+}
+
+/* Dropdown Navigation Styles */
+.dealroom-nav-dropdown-trigger {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.dealroom-nav-chevron {
+  transition: transform 0.2s ease;
+}
+
+.dealroom-nav-chevron.rotated {
+  transform: rotate(180deg);
+}
+
+/* Dropdown Styles */
+.dealroom-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: var(--z-dropdown);
+  margin-top: var(--space-2);
+  animation: dealroom-dropdown-enter 0.15s ease-out;
+}
+
+@keyframes dealroom-dropdown-enter {
+  from {
+    opacity: 0;
+    transform: translateY(-8px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.dealroom-dropdown-content {
+  background: var(--white);
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-xl);
+  padding: var(--space-2);
+  min-width: 220px;
+}
+
+.dealroom-dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-4);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--gray-700);
+  text-decoration: none;
+  border-radius: var(--radius-lg);
+  transition: all 0.15s ease;
+}
+
+.dealroom-dropdown-item:hover {
+  color: var(--dealroom-primary);
+  background-color: var(--gray-50);
+}
+
+/* Mobile Dropdown Styles */
+.dealroom-mobile-dropdown {
+  margin-left: var(--space-4);
+  margin-top: var(--space-2);
+  padding-left: var(--space-4);
+  border-left: 2px solid var(--gray-200);
+}
+
+.dealroom-mobile-dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--gray-600);
+  text-decoration: none;
+  border-radius: var(--radius-lg);
+  transition: all 0.2s ease;
+  margin-bottom: var(--space-1);
+}
+
+.dealroom-mobile-dropdown-item:hover {
+  color: var(--dealroom-primary);
+  background-color: var(--gray-50);
+}
+
+/* Header Actions */
+.dealroom-header-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.dealroom-search-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: none;
+  border: none;
+  color: var(--gray-400); /* Lighter search icon */
+  border-radius: var(--radius-lg);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.dealroom-search-btn:hover {
+  color: var(--white);
+  background-color: var(--gray-700);
+}
+
+/* User Menu */
+.dealroom-user-menu {
+  display: none;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-2) var(--space-3);
+  background: var(--gray-700); /* Darker user menu background */
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--gray-600); /* Darker border for user menu */
+}
+
+@media (min-width: 768px) {
+  .dealroom-user-menu {
+    display: flex;
+  }
+}
+
+.dealroom-user-avatar {
+  width: 32px;
+  height: 32px;
+  background: var(--gray-600); /* Darker avatar background */
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--gray-300); /* Lighter avatar icon */
+}
+
+.dealroom-username {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--gray-200); /* Lighter username */
+}
+
+.dealroom-logout-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  background: none;
+  border: none;
+  color: var(--gray-400); /* Lighter logout icon */
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.dealroom-logout-btn:hover {
+  color: var(--white);
+  background-color: var(--gray-600);
+}
+
+/* Auth Buttons */
+.dealroom-auth-buttons {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.dealroom-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-2) var(--space-4);
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  border-radius: var(--radius-lg);
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  letter-spacing: -0.01em;
+  border: 1px solid transparent;
+}
+
+.dealroom-btn-outline { /* For dark header, outline button needs to be light */
+  color: var(--gray-200);
+  border-color: var(--gray-500);
+  background: transparent; /* Transparent on dark header */
+}
+
+.dealroom-btn-outline:hover {
+  color: var(--white);
+  border-color: var(--gray-300);
+  background: var(--gray-700); /* Darker hover for outline */
+}
+
+.dealroom-btn-primary { /* This is the main "Sign Up" or "Add Data" button */
+  color: var(--dealroom-primary); /* Dark text */
+  background: var(--white); /* White background */
+  border-color: var(--white);
+}
+
+.dealroom-btn-primary:hover {
+  background: var(--gray-200); /* Slightly off-white hover */
+  border-color: var(--gray-200);
+  color: var(--dealroom-primary);
+  /* transform: translateY(-1px); */ /* Optional */
+  /* box-shadow: var(--shadow-md); */ /* Optional */
+}
+
+/* Mobile Menu Button */
+.dealroom-mobile-menu-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: none;
+  border: none;
+  color: var(--gray-300); /* Lighter mobile menu icon */
+  border-radius: var(--radius-lg);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+@media (min-width: 1024px) {
+  .dealroom-mobile-menu-btn {
+    display: none;
+  }
+}
+
+.dealroom-mobile-menu-btn:hover {
+  color: var(--white);
+  background-color: var(--gray-700);
+}
+
+/* Mobile Menu Overlay */
+.dealroom-mobile-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-overlay);
+  display: flex;
+}
+
+@media (min-width: 1024px) {
+  .dealroom-mobile-overlay {
+    display: none;
+  }
+}
+
+.dealroom-mobile-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  -webkit-backdrop-filter: blur(4px); /* Safari support */
+  backdrop-filter: blur(4px);
+}
+
+.dealroom-mobile-menu {
+  position: relative;
+  width: 320px;
+  max-width: 85vw;
+  background: var(--white);
+  box-shadow: var(--shadow-xl);
+  display: flex;
+  flex-direction: column;
+  animation: dealroom-mobile-slide-in 0.3s ease-out;
+}
+
+@keyframes dealroom-mobile-slide-in {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.dealroom-mobile-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-6);
+  border-bottom: 1px solid var(--gray-200);
+}
+
+.dealroom-mobile-close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: none;
+  border: none;
+  color: var(--gray-500);
+  border-radius: var(--radius-lg);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.dealroom-mobile-close:hover {
+  color: var(--gray-700);
+  background-color: var(--gray-100);
+}
+
+/* Mobile Navigation */
+.dealroom-mobile-nav {
+  flex: 1;
+  padding: var(--space-6);
+  overflow-y: auto;
+}
+
+.dealroom-mobile-nav-link {
+  display: block;
+  padding: var(--space-4);
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--gray-700);
+  text-decoration: none;
+  border-radius: var(--radius-lg);
+  transition: all 0.2s ease;
+  margin-bottom: var(--space-1);
+}
+
+.dealroom-mobile-nav-link:hover {
+  color: var(--dealroom-primary);
+  background-color: var(--gray-50);
+}
+
+.dealroom-mobile-nav-link.active {
+  color: var(--dealroom-blue);
+  background-color: var(--blue-50);
+  font-weight: 600;
+}
+
+.dealroom-mobile-dropdown {
+  margin-left: var(--space-4);
+  margin-top: var(--space-2);
+  padding-left: var(--space-4);
+  border-left: 2px solid var(--gray-200);
+}
+
+.dealroom-mobile-dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--gray-600);
+  text-decoration: none;
+  border-radius: var(--radius-lg);
+  transition: all 0.2s ease;
+  margin-bottom: var(--space-1);
+}
+
+.dealroom-mobile-dropdown-item:hover {
+  color: var(--dealroom-primary);
+  background-color: var(--gray-50);
+}
+
+/* Mobile User Section */
+.dealroom-mobile-user {
+  padding: var(--space-6);
+  border-top: 1px solid var(--gray-200);
+  background: var(--gray-50);
+}
+
+.dealroom-mobile-user-info {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin-bottom: var(--space-4);
+}
+
+.dealroom-mobile-logout {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  width: 100%;
+  padding: var(--space-3);
+  background: none;
+  border: 1px solid var(--gray-300);
+  color: var(--gray-700);
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: var(--radius-lg);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.dealroom-mobile-logout:hover {
+  color: var(--gray-900);
+  border-color: var(--gray-400);
+  background: var(--white);
+}
+
+/* Layout Adjustments */
+.dealroom-layout {
+  min-height: 100vh;
+  background: var(--gray-50);
+}
+
+.dealroom-main {
+  padding-top: var(--space-8);
+}
+
+/* Container */
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 var(--space-6);
+}
+
+@media (max-width: 767px) {
+  .container {
+    padding: 0 var(--space-4);
+  }
+}
+
+/* Cards */
+.card {
+  background: var(--white);
+  border-radius: var(--radius-2xl);
+  box-shadow: var(--shadow);
+  border: 1px solid var(--gray-200);
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-2px);
+  border-color: var(--gray-300);
+}
+
+.card-header {
+  padding: var(--space-6);
+  border-bottom: 1px solid var(--gray-200);
+  background: var(--gray-50);
+}
+
+.card-body {
+  padding: var(--space-6);
+}
+
+.card-footer {
+  padding: var(--space-6);
+  border-top: 1px solid var(--gray-200);
+  background: var(--gray-50);
+}
+
+/* Hero Section */
+.dealroom-hero {
+  background: linear-gradient(135deg, var(--dealroom-primary) 0%, var(--dealroom-blue) 100%);
+  color: var(--white);
+  border-radius: var(--radius-2xl);
+  padding: var(--space-12);
+  margin-bottom: var(--space-8);
+}
+
+/* Statistics Cards */
+.stat-card {
+  background: var(--white);
+  border-radius: var(--radius-2xl);
+  padding: var(--space-6);
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--gray-200);
+  transition: all 0.3s ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-xl);
+  border-color: var(--gray-300);
+}
+
+/* Grid System */
+.grid {
+  display: grid;
+  gap: var(--space-6);
+}
+
+.grid-cols-1 { grid-template-columns: repeat(1, minmax(0, 1fr)); }
+.grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.grid-cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.grid-cols-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+
+@media (min-width: 768px) {
+  .md\:grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .md\:grid-cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .md\:grid-cols-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
+
+@media (min-width: 1024px) {
+  .lg\:grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .lg\:grid-cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .lg\:grid-cols-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .lg\:grid-cols-5 { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+}
+
+/* Typography */
+.text-xs { font-size: 0.75rem; line-height: 1rem; }
+.text-sm { font-size: 0.875rem; line-height: 1.25rem; }
+.text-base { font-size: 1rem; line-height: 1.5rem; }
+.text-lg { font-size: 1.125rem; line-height: 1.75rem; }
+.text-xl { font-size: 1.25rem; line-height: 1.75rem; }
+.text-2xl { font-size: 1.5rem; line-height: 2rem; }
+.text-3xl { font-size: 1.875rem; line-height: 2.25rem; }
+.text-4xl { font-size: 2.25rem; line-height: 2.5rem; }
+.text-5xl { font-size: 3rem; line-height: 1; }
+
+.font-light { font-weight: 300; }
+.font-normal { font-weight: 400; }
+.font-medium { font-weight: 500; }
+.font-semibold { font-weight: 600; }
+.font-bold { font-weight: 700; }
+.font-extrabold { font-weight: 800; }
+
+/* Colors */
+.text-gray-400 { color: var(--gray-400); }
+.text-gray-500 { color: var(--gray-500); }
+.text-gray-600 { color: var(--gray-600); }
+.text-gray-700 { color: var(--gray-700); }
+.text-gray-800 { color: var(--gray-800); }
+.text-gray-900 { color: var(--gray-900); }
+.text-blue-600 { color: var(--blue-600); }
+.text-blue-700 { color: var(--blue-700); }
+
+/* Backgrounds */
+.bg-white { background-color: var(--white); }
+.bg-gray-50 { background-color: var(--gray-50); }
+.bg-gray-100 { background-color: var(--gray-100); }
+.bg-gray-200 { background-color: var(--gray-200); }
+.bg-gray-900 { background-color: var(--gray-900); }
+.bg-blue-50 { background-color: var(--blue-50); }
+.bg-blue-100 { background-color: var(--blue-100); }
+.bg-blue-600 { background-color: var(--blue-600); }
+.bg-primary-100 { background-color: var(--blue-100); }
+.bg-success-100 { background-color: #dcfce7; }
+.bg-warning-100 { background-color: #fef3c7; }
+.bg-error-100 { background-color: #fee2e2; }
+.bg-green-100 { background-color: #dcfce7; }
+.bg-yellow-100 { background-color: #fef3c7; }
+.bg-purple-100 { background-color: #f3e8ff; }
+
+/* Flexbox */
+.flex { display: flex; }
+.flex-col { flex-direction: column; }
+.items-center { align-items: center; }
+.items-start { align-items: flex-start; }
+.items-end { align-items: flex-end; }
+.justify-center { justify-content: center; }
+.justify-between { justify-content: space-between; }
+.justify-start { justify-content: flex-start; }
+.justify-end { justify-content: flex-end; }
+
+/* Gaps */
+.gap-1 { gap: var(--space-1); }
+.gap-2 { gap: var(--space-2); }
+.gap-3 { gap: var(--space-3); }
+.gap-4 { gap: var(--space-4); }
+.gap-6 { gap: var(--space-6); }
+.gap-8 { gap: var(--space-8); }
+
+/* Spacing */
+.p-1 { padding: var(--space-1); }
+.p-2 { padding: var(--space-2); }
+.p-3 { padding: var(--space-3); }
+.p-4 { padding: var(--space-4); }
+.p-6 { padding: var(--space-6); }
+.p-8 { padding: var(--space-8); }
+
+.px-2 { padding-left: var(--space-2); padding-right: var(--space-2); }
+.px-3 { padding-left: var(--space-3); padding-right: var(--space-3); }
+.px-4 { padding-left: var(--space-4); padding-right: var(--space-4); }
+.px-6 { padding-left: var(--space-6); padding-right: var(--space-6); }
+
+.py-1 { padding-top: var(--space-1); padding-bottom: var(--space-1); }
+.py-2 { padding-top: var(--space-2); padding-bottom: var(--space-2); }
+.py-3 { padding-top: var(--space-3); padding-bottom: var(--space-3); }
+.py-4 { padding-top: var(--space-4); padding-bottom: var(--space-4); }
+.py-6 { padding-top: var(--space-6); padding-bottom: var(--space-6); }
+.py-8 { padding-top: var(--space-8); padding-bottom: var(--space-8); }
+.py-12 { padding-top: var(--space-12); padding-bottom: var(--space-12); }
+.py-16 { padding-top: var(--space-16); padding-bottom: var(--space-16); }
+.py-20 { padding-top: var(--space-20); padding-bottom: var(--space-20); }
+
+.m-0 { margin: 0; }
+.mb-2 { margin-bottom: var(--space-2); }
+.mb-4 { margin-bottom: var(--space-4); }
+.mb-6 { margin-bottom: var(--space-6); }
+.mb-8 { margin-bottom: var(--space-8); }
+.mb-12 { margin-bottom: var(--space-12); }
+
+.mt-2 { margin-top: var(--space-2); }
+.mt-4 { margin-top: var(--space-4); }
+.mt-6 { margin-top: var(--space-6); }
+.mt-8 { margin-top: var(--space-8); }
+
+/* Borders */
+.border { border: 1px solid var(--gray-200); }
+.border-gray-200 { border-color: var(--gray-200); }
+.border-gray-300 { border-color: var(--gray-300); }
+.border-t { border-top: 1px solid var(--gray-200); }
+.border-b { border-bottom: 1px solid var(--gray-200); }
+.rounded { border-radius: var(--radius); }
+.rounded-md { border-radius: var(--radius-md); }
+.rounded-lg { border-radius: var(--radius-lg); }
+.rounded-xl { border-radius: var(--radius-xl); }
+.rounded-2xl { border-radius: var(--radius-2xl); }
+.rounded-full { border-radius: 9999px; }
+
+/* Shadows */
+.shadow { box-shadow: var(--shadow); }
+.shadow-md { box-shadow: var(--shadow-md); }
+.shadow-lg { box-shadow: var(--shadow-lg); }
+.shadow-xl { box-shadow: var(--shadow-xl); }
+
+/* Width & Height */
+.w-full { width: 100%; }
+.h-full { height: 100%; }
+.min-h-screen { min-height: 100vh; }
+
+/* Display */
+.block { display: block; }
+.inline-block { display: inline-block; }
+.hidden { display: none; }
+
+/* Text utilities */
+.truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+
+
+/* Form elements */
+.form-input {
+  width: 100%;
+  padding: var(--space-3);
+  border: 1px solid var(--gray-300);
+  border-radius: var(--radius-lg);
+  font-size: 0.875rem;
+  font-family: var(--font-family);
+  transition: all 0.2s ease;
+  background: var(--white);
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: var(--blue-600);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.form-select {
+  width: 100%;
+  padding: var(--space-3);
+  border: 1px solid var(--gray-300);
+  border-radius: var(--radius-lg);
+  font-size: 0.875rem;
+  font-family: var(--font-family);
+  background: var(--white);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.form-select:focus {
+  outline: none;
+  border-color: var(--blue-600);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+/* Status badges */
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--space-1) var(--space-3);
+  border-radius: var(--radius-xl);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.status-operating {
+  background-color: #dcfce7;
+  color: #166534;
+}
+
+.status-acquired {
+  background-color: #dbeafe;
+  color: #1e40af;
+}
+
+.status-closed {
+  background-color: #fee2e2;
+  color: #dc2626;
+}
+
+.status-ipo {
+  background-color: #f3e8ff;
+  color: #7c3aed;
+}
+
+/* Button Styles */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-3) var(--space-5);
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-decoration: none;
+  border-radius: var(--radius-lg);
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  letter-spacing: -0.01em;
+  border: 1px solid transparent;
+  cursor: pointer;
+  font-family: var(--font-family);
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn-primary {
+  color: var(--white);
+  background: var(--dealroom-primary);
+}
+
+.btn-primary:hover:not(:disabled) {
+  background: var(--gray-800);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
+.btn-secondary {
+  color: var(--white);
+  background: var(--dealroom-blue);
+}
+
+.btn-secondary:hover:not(:disabled) {
+  background: var(--blue-700);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
+.btn-outline {
+  color: var(--gray-700);
+  border-color: var(--gray-300);
+  background: var(--white);
+}
+
+.btn-outline:hover:not(:disabled) {
+  color: var(--gray-900);
+  border-color: var(--gray-400);
+  background: var(--gray-50);
+}
+
+.btn-sm {
+  padding: var(--space-1) var(--space-3);
+  font-size: 0.75rem;
+}
+
+.btn-lg {
+  padding: var(--space-4) var(--space-6);
+  font-size: 1rem;
+}
+
+/* Responsive utilities */
+@media (min-width: 768px) {
+  .md\:block { display: block; }
+  .md\:hidden { display: none; }
+  .md\:flex { display: flex; }
+}
+
+@media (min-width: 1024px) {
+  .lg\:block { display: block; }
+  .lg\:hidden { display: none; }
+  .lg\:flex { display: flex; }
+}
+
+/* Dealroom specific gradients */
+.dealroom-gradient {
+  background: linear-gradient(135deg, var(--dealroom-primary) 0%, var(--gray-800) 100%);
+}
+
+.dealroom-hero {
+  background: linear-gradient(135deg, #1a1a1a 0%, #2563eb 100%);
+  color: var(--white);
+}
+
+/* Page transitions */
+.page-enter {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.page-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 300ms ease, transform 300ms ease;
+}
+
+/* Smooth scrolling for anchor links */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Focus styles for accessibility */
+*:focus-visible {
+  outline: 2px solid var(--blue-600);
+  outline-offset: 2px;
+}
+
+/* Print styles */
+@media print {
+  .dealroom-header,
+  .dealroom-mobile-overlay {
+    display: none !important;
+  }
+  
+  .dealroom-main {
+    padding-top: 0 !important;
+  }
+}
+
+/* Add these missing utility classes */
+.bg-primary-100 { background-color: var(--blue-100); }
+.bg-success-100 { background-color: #dcfce7; }
+.bg-warning-100 { background-color: #fef3c7; }
+.bg-error-100 { background-color: #fee2e2; }
+.bg-green-100 { background-color: #dcfce7; }
+.bg-yellow-100 { background-color: #fef3c7; }
+.bg-purple-100 { background-color: #f3e8ff; }
+
+.text-primary-600 { color: var(--blue-600); }
+.text-success-600 { color: #059669; }
+.text-warning-600 { color: #d97706; }
+.text-error-600 { color: #dc2626; }
+.text-blue-600 { color: #2563eb; }
+.text-green-600 { color: #059669; }
+.text-yellow-600 { color: #d97706; }
+.text-purple-600 { color: #9333ea; }
+
+.space-y-3 > * + * {
+  margin-top: var(--space-3);
+}
+
+.space-y-4 > * + * {
+  margin-top: var(--space-4);
+}
+
+.space-y-6 > * + * {
+  margin-top: var(--space-6);
+}
+
+.space-y-8 > * + * {
+  margin-top: var(--space-8);
+}
+
+/* Form styles */
+textarea.form-input {
+  resize: vertical;
+  min-height: 100px;
+}
+
+/* Button with icon spacing */
+.btn svg {
+  flex-shrink: 0;
+}
+
+/* Loading state for buttons */
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Success message styles */
+.success-message {
+  background-color: #dcfce7;
+  border: 1px solid #16a34a;
+  color: #166534;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+/* Error message styles */
+.error-message {
+  background-color: #fee2e2;
+  border: 1px solid #dc2626;
+  color: #dc2626;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  margin-bottom: 1rem;
+}
